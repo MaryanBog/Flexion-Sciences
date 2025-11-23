@@ -1,0 +1,530 @@
+\documentclass[11pt]{article}
+
+% Encoding and language
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% Math
+\usepackage{amsmath, amssymb, amsfonts}
+
+% Page layout (arXiv-like)
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Better formatting
+\usepackage{setspace}
+\onehalfspacing
+
+% Links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkcolor = blue,
+    citecolor = blue,
+    urlcolor = blue
+}
+
+% Section spacing similar to arXiv
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+
+% Document begins
+\begin{document}
+
+% Title
+\title{\textbf{Flexionization as a Universal Model of Immune Dynamics}\\
+\vspace{0.3em}
+\large Flexion-Immune-Model Version 1.1}
+
+% Author
+\author{
+Maryan Bogdanov \\
+\small Independent Researcher \\
+\small \texttt{m7823445@gmail.com}
+}
+
+% Date
+\date{2025}
+
+% Render title
+\maketitle
+
+\begin{abstract}
+This paper presents a conceptual model of immune dynamics based on the Flexionization theory. 
+It shows that the key structural elements of Flexionization --- synthetic mass $Q_p$, reference structural mass $Q_F$, 
+structural deviation $\Delta$, and the equilibrium indicator $\mathrm{FXI}$ --- naturally correspond to biological quantities: 
+the actual physiological state of the organism, the healthy reference state, the degree of pathological deviation, 
+and an integrated indicator of immune balance.
+
+The immune response is interpreted as a corrective operator $E$ that strives to return the system to structural symmetry 
+$\mathrm{FXI} = 1$. Within this interpretation, a dynamic equation of the immune response is derived, describing either 
+the organism's restoration of health or the loss of stability when the compensatory reaction is insufficient.
+
+The proposed model is universal, mathematically rigorous, and applicable to various immune scenarios --- viral infections, 
+oncological processes, autoimmune disorders, and immunodeficiency states. This work opens the possibility of establishing 
+a unified formal platform for studying immune dynamics.
+\end{abstract}
+
+\newpage
+
+\section{Introduction}
+
+The study of the immune system is traditionally associated with significant complexity due to its nonlinearity, 
+multi-level organization, and deep dependencies between cellular, biochemical, and systemic processes. 
+Most existing models of the immune response are based on biological mechanisms, empirical equations, or statistical 
+approximations, which limits the ability to derive universal laws of immune dynamics and to predict system behavior 
+across diverse pathological conditions.
+
+At its core, immunity is a regulatory mechanism with feedback: it measures the degree of deviation of the organism 
+from a reference healthy state and forms a corrective response aimed at restoring equilibrium. However, the formal 
+mathematical description of such regulation remains fragmented and is not unified into a coherent theoretical structure.
+
+The Flexionization theory provides a universal, axiomatically constructed model of dynamic structural equilibrium, 
+originally developed to describe systems where maintaining balance between the actual and reference state is essential. 
+The key elements of the theory --- synthetic mass $Q_p$, structural mass $Q_F$, deviation $\Delta$, and the equilibrium 
+indicator $\mathrm{FXI}$ --- can be naturally interpreted in a biological context, where the organism is viewed as a 
+dynamic system striving for structural symmetry ($\mathrm{FXI} = 1$), corresponding to a healthy state.
+
+The purpose of this work is to demonstrate that Flexionization can serve as a universal mathematical foundation for 
+modeling immune dynamics, providing formal rules, operator mechanisms, stability criteria, and a generalized description 
+of the organism's response to pathogenic disturbances.
+
+\section{The Immune System as a Dynamic Regulatory Structure}
+
+The immune system is a complex mechanism responsible for maintaining the internal balance of the organism. 
+Its primary function is to detect deviations from normal physiological conditions and to form a corrective 
+response aimed at restoring stability.
+
+From the standpoint of dynamical systems theory, immunity can be viewed as a feedback regulator. 
+The system continuously measures the current state of the organism --- the presence of pathogens, 
+inflammatory markers, cellular damage --- and compares it with a reference healthy state. Based on this 
+comparison, a corrective action is generated, varying in strength and nature: from activation of innate 
+mechanisms to complex adaptive immune responses.
+
+This perspective aligns well with control theory:
+\begin{itemize}
+    \item there exists a target (reference) state of the organism,
+    \item there exists a measurable deviation from this state,
+    \item there exists a regulator attempting to reduce this deviation.
+\end{itemize}
+
+However, existing biological models of immunity often focus on specific mechanisms or localized 
+interactions between cells, making them highly specialized and difficult to generalize. As a result, 
+there is no unified formal structure capable of describing immune dynamics as a whole, independently 
+of specific diseases or biochemical details.
+
+This creates the need for an abstract regulatory model that can capture the general principles of 
+immune function at the level of system dynamics. Flexionization can serve as such a model, as its 
+axiomatic framework fully corresponds to the requirements of a formal description of immune equilibrium.
+
+\section{Overview of the Flexionization Structure}
+
+The Flexionization theory describes dynamic equilibrium in systems where it is necessary to maintain 
+structural balance between the actual state and the reference state. The model is built on an axiomatic 
+foundation and defines a formal set of quantities that describe the structure of the system at any moment 
+in time.
+
+Below are the key elements of the theory, which will later be interpreted in a biological context.
+
+\subsection{Key Quantities $Q_p$, $Q_F$, and $\Delta$}
+
+\textbf{Synthetic mass $Q_p$} represents the actual structural mass of the system.  
+It reflects the current state of the system, aggregating all significant parameters into a single value.
+
+\textbf{Structural mass $Q_F$} represents the ideal (reference) state of the system against which the actual 
+state is compared.
+
+\textbf{Deviation $\Delta = Q_p - Q_F$} quantifies the structural difference between the actual and reference 
+states.  
+A positive value indicates excess, a negative value indicates deficit, and zero represents perfect balance.
+
+This triad $(Q_p, Q_F, \Delta)$ allows any imbalance within the system to be expressed formally.
+
+\subsection{Equilibrium Indicator $\mathrm{FXI}$}
+
+The equilibrium indicator $\mathrm{FXI}$ is a monotonic mapping of the system's state that measures the 
+degree of deviation from structural symmetry.
+
+\begin{itemize}
+    \item $\mathrm{FXI} > 1$ --- expanded structural state,
+    \item $\mathrm{FXI} < 1$ --- compressed structural state,
+    \item $\mathrm{FXI} = 1$ --- perfect structural symmetry (equilibrium).
+\end{itemize}
+
+$\mathrm{FXI}$ serves as an integral metric that reflects the current structural quality of the system.
+
+\subsection{Corrective Operator $E$}
+
+The corrective operator $E$ determines how the system adjusts from one state to the next.  
+It specifies how deviation from equilibrium should be corrected in the upcoming step.
+
+If $\mathrm{FXI}$ measures deviation, then $E(\mathrm{FXI})$ gives the target equilibrium value for the next moment.
+
+The operator $E$ satisfies the following:
+
+\begin{itemize}
+    \item it is defined for all admissible states,
+    \item it is monotonic,
+    \item it is bounded,
+    \item it tends to drive the system toward structural symmetry ($\mathrm{FXI} = 1$).
+\end{itemize}
+
+In a biological context, the corrective operator corresponds to the immune response.
+
+\section{Mapping Immunity onto the Flexionization Structure}
+
+We now examine how the biological elements of the immune system naturally correspond to the structural 
+quantities defined in the Flexionization theory. This mapping enables immune dynamics to be formalized 
+using an axiomatic framework originally developed for structural regulatory systems.
+
+\subsection{The Organism as a System State $S$}
+
+In Flexionization, the state of a system is represented as the tuple:
+\[
+S = (Q_p, Q_F, \Delta, q, W, U)
+\]
+where $q$, $W$, and $U$ represent additional structural parameters.
+
+In the biological context:
+\begin{itemize}
+    \item $Q_p$ --- the actual physiological state of the organism (e.g., pathogen load, inflammation level, immune cell activity),
+    \item $Q_F$ --- the healthy reference state of the organism,
+    \item $q$ --- a set of biomarkers (cellular and biochemical indicators),
+    \item $W$ --- the relative weights of these indicators,
+    \item $U$ --- internal parameters of the organism (genetics, baseline immune tone, individual characteristics).
+\end{itemize}
+
+Thus, the organism can be viewed as a formal system whose state at any moment corresponds precisely 
+to a Flexionization state $S$.
+
+\subsection{Disease as Structural Deviation $\Delta$}
+
+Pathological processes cause the actual structural mass $Q_p$ to diverge from the reference mass $Q_F$.  
+The degree of mismatch is
+\[
+\Delta = Q_p - Q_F .
+\]
+
+Biologically, this corresponds to:
+\begin{itemize}
+    \item increased viral load,
+    \item uncontrolled tumor cell proliferation,
+    \item dysregulated inflammation,
+    \item immunodeficiency.
+\end{itemize}
+
+If $\Delta > 0$, the system is displaced toward pathological excess  
+(e.g., rapid viral replication, tumor expansion).
+
+If $\Delta < 0$, the system exhibits deficit or insufficiency  
+(e.g., immune suppression, tissue damage, exhaustion of reserves).
+
+Thus, $\Delta$ provides a strict quantitative measure of disease.
+
+\subsection{The Immune Response as the Corrective Operator $E$}
+
+The corrective operator $E$ determines the target value of the equilibrium indicator $\mathrm{FXI}$ for the next state.
+
+In biological terms, $E$ corresponds to the \textbf{immune response}, which includes:
+\begin{itemize}
+    \item activation of innate immunity,
+    \item adaptive immune response,
+    \item antibody production,
+    \item cytotoxic T-cell activity,
+    \item inflammatory mechanisms,
+    \item restoration of homeostasis.
+\end{itemize}
+
+In essence, $E$ is the biological correction mechanism that attempts to reduce $\Delta$ and restore equilibrium 
+($\mathrm{FXI} = 1$).
+
+\subsection{Health as Structural Symmetry ($\mathrm{FXI} = 1$)}
+
+In Flexionization, the condition $\mathrm{FXI} = 1$ represents perfect structural symmetry.
+
+In biological terms, this corresponds to:
+\begin{itemize}
+    \item absence of pathogens,
+    \item normal immune cell levels,
+    \item minimal inflammatory activity,
+    \item stable biomarkers.
+\end{itemize}
+
+Thus, $\mathrm{FXI} = 1$ corresponds to a state of \textbf{health}, and deviations from this value quantify 
+the degree of pathology.
+
+This structural mapping provides a universal mathematical basis for describing immune dynamics.
+
+\section{Dynamics of the Immune Response in Flexionization Terms}
+
+The Flexionization theory defines a formal rule for how the system transitions from one state to another 
+under the action of the corrective operator $E$. In the biological context, this rule describes how the 
+organism responds to pathological deviation and attempts to return to a healthy state.
+
+\subsection{Core Dynamic Equation for $\Delta$}
+
+In Flexionization, the evolution of deviation is given by:
+\[
+\Delta_{t+1} = F^{-1}\!\left( E\!\left( F(\Delta_t) \right) \right).
+\]
+
+This process can be described in three steps:
+\begin{enumerate}
+    \item The current deviation $\Delta_t$ is converted into the equilibrium indicator $\mathrm{FXI}$ via the mapping $F$.
+    \item The corrective operator $E$ determines the target equilibrium value for the next moment.
+    \item The new equilibrium value is mapped back into deviation $\Delta_{t+1}$ using $F^{-1}$.
+\end{enumerate}
+
+Biologically, this corresponds to:
+\begin{itemize}
+    \item the organism measuring the degree of pathology,
+    \item the immune system generating a corrective reaction,
+    \item the organism reaching a new physiological state as a result.
+\end{itemize}
+
+Thus, the equation above represents a universal formalization of the \textbf{immune reaction}.
+
+\subsection{Stability and Return to Health}
+
+If the immune operator $E$ has a \textit{contractive} property, such that:
+\[
+E(x) < x \quad \text{for } x > 1,
+\]
+and
+\[
+E(x) > x \quad \text{for } x < 1,
+\]
+then the system inevitably moves toward $\mathrm{FXI} = 1$, and therefore toward $\Delta = 0$.
+
+This behavior corresponds biologically to:
+\begin{itemize}
+    \item effective immune response,
+    \item successful suppression of infection,
+    \item restoration of physiological stability.
+\end{itemize}
+
+A contractive operator $E$ therefore reflects a \textbf{healthy, stable immune system}.
+
+\subsection{Loss of Stability (Disease)}
+
+If $E$ becomes too weak, and instead of contraction produces expansion:
+\[
+E(x) \ge x \quad \text{for } x > 1,
+\]
+the system loses equilibrium.
+
+In biological terms, this indicates:
+\begin{itemize}
+    \item rapid viral expansion,
+    \item aggressive tumor progression,
+    \item collapse of immune response,
+    \item chronic inflammation,
+    \item autoimmune dysregulation.
+\end{itemize}
+
+In such cases, $\Delta$ increases, $\mathrm{FXI}$ deviates further from 1, and the organism moves into a 
+state of progressive pathology.
+
+The stability properties of the operator $E$ therefore determine whether the immune system can restore 
+health or whether pathology continues to intensify.
+
+\section{Application of the Model to Various Immune Scenarios}
+
+Because Flexionization describes the general structure of dynamic deviation and corrective response, 
+its formal apparatus can be applied to a wide range of biological situations, regardless of the specific 
+mechanisms of a disease. Below are four classes of scenarios that demonstrate the universality of the model.
+
+\subsection{Viral Infections}
+
+In viral infections, exponential pathogen growth increases the actual structural mass $Q_p$ and, 
+consequently, increases the deviation $\Delta$.
+
+The immune system forms the corrective operator $E$, which includes:
+\begin{itemize}
+    \item activation of innate immunity,
+    \item fever response,
+    \item antibody production,
+    \item cytotoxic destruction of infected cells.
+\end{itemize}
+
+If $E$ acts as a contractive operator, then:
+\[
+\Delta_{t+1} < \Delta_t,
+\]
+and the system gradually returns to $\mathrm{FXI} = 1$.
+
+If the corrective response is insufficient (as in immunodeficiency), $\Delta$ increases, and the infection 
+may progress into a severe or chronic form.
+
+\subsection{Oncology: Tumor vs.~Immune System}
+
+A tumor process can be viewed as growth of a pathological component of $Q_p$ that no longer follows 
+normal physiological constraints. In this case, $\Delta$ increases rapidly.
+
+The immune operator $E$ includes:
+\begin{itemize}
+    \item recognition of tumor antigens,
+    \item activation of NK cells,
+    \item T-cell mediated cytotoxic response,
+    \item destruction of tumor cells.
+\end{itemize}
+
+However, in oncology the operator $E$ often loses contractive behavior:
+\begin{itemize}
+    \item tumors suppress immune response,
+    \item create immunosuppressive microenvironments,
+    \item weaken cytotoxic activity.
+\end{itemize}
+
+In Flexionization terms:
+\[
+E(\mathrm{FXI}) \approx \mathrm{FXI} \quad \text{or} \quad E(\mathrm{FXI}) > \mathrm{FXI},
+\]
+leading to a loss of stability and continual increase of $\Delta$.
+
+Thus, cancer is an example of a system in which the corrective operator $E$ becomes functionally impaired.
+
+\subsection{Autoimmune Reactions}
+
+In autoimmune diseases, the sign of the corrective operator $E$ becomes reversed:
+\begin{itemize}
+    \item the immune system attacks the organism's own tissues,
+    \item the corrective mechanism increases deviation instead of reducing it.
+\end{itemize}
+
+In model terms:
+\[
+E(x) < x \quad \text{for } x < 1,
+\]
+meaning the system moves \emph{away} from structural symmetry ($\mathrm{FXI} = 1$).
+
+This provides a formal representation of autoimmune dysregulation.
+
+\subsection{Immunodeficiencies}
+
+In immunodeficiencies, the operator $E$ has the correct direction but insufficient strength:
+\[
+0 < |\,E(x) - 1\,| \ll |\,x - 1\,|.
+\]
+
+The immune system attempts to reduce deviation but cannot provide the necessary corrective force.
+
+As a result:
+\[
+\Delta_{t+1} \approx \Delta_t \quad \text{or} \quad \Delta_{t+1} > \Delta_t,
+\]
+leading to chronic infections, hypersensitivity, and weakened defensive capabilities.
+
+Thus, Flexionization enables formal identification of the root causes of immune instability 
+across a wide range of clinical scenarios.
+
+\section{Advantages of the Flexionization Model for Biomedical Research}
+
+Using Flexionization to describe immune dynamics offers several advantages that make this model 
+highly promising for both theoretical research and applied biomedical applications.
+
+\textbf{1. Universality.}  
+The model does not depend on the specific nature of a disease, biochemical mechanisms, 
+or particular cellular interactions.  
+It captures the general dynamic principles of:  
+\[
+\text{deviation} \;\longrightarrow\; \text{corrective response} \;\longrightarrow\; \text{restoration of equilibrium}.
+\]
+
+\textbf{2. Formal mathematical rigor.}  
+Flexionization is based on axioms, well-defined mappings, strict dynamic rules, and stability theorems.  
+This allows analysis of immune behavior from the viewpoint of control theory and dynamical systems.
+
+\textbf{3. A unified framework for diverse diseases.}  
+The same structural model applies to:
+\begin{itemize}
+    \item viral infections,
+    \item tumors,
+    \item autoimmune disorders,
+    \item immunodeficiency states.
+\end{itemize}
+Differences arise only in the properties of the corrective operator $E$.
+
+\textbf{4. Clear interpretation of stability.}  
+Contractive behavior of the operator $E$ corresponds to a healthy immune system,  
+while loss of contraction corresponds to pathological conditions.  
+This provides intuitive understanding of stability and disease progression.
+
+\textbf{5. Suitability for formal modeling and simulations.}  
+The dynamic equation
+\[
+\Delta_{t+1} = F^{-1}\!\left( E\!\left( F(\Delta_t) \right) \right)
+\]
+is particularly convenient for:
+\begin{itemize}
+    \item computational models,
+    \item simulation engines,
+    \item predictive algorithms.
+\end{itemize}
+
+\textbf{6. Applicability in medicine and biotechnology.}  
+Flexionization can be used to:
+\begin{itemize}
+    \item study tumor dynamics,
+    \item model therapeutic interventions,
+    \item analyze vaccine responses,
+    \item design diagnostic algorithms.
+\end{itemize}
+
+Thus, Flexionization provides a new mathematical language for describing the immune system, 
+integrating biology, dynamical systems, and control theory into a single coherent framework.
+
+\section{Conclusion}
+
+This work demonstrates that the Flexionization theory can serve as a universal formal foundation 
+for describing immune dynamics. The key structural elements of the model --- synthetic mass $Q_p$, 
+reference mass $Q_F$, deviation $\Delta$, the equilibrium indicator $\mathrm{FXI}$, and the corrective 
+operator $E$ --- naturally correspond to the biological mechanisms of the immune response.
+
+This correspondence makes it possible to describe a wide spectrum of immune scenarios --- from viral 
+infections to oncological and autoimmune processes --- within a single mathematical framework. 
+The model does not depend on specific biochemical mechanisms and relies solely on the fundamental 
+principles of feedback, stability, and corrective regulation.
+
+Flexionization provides a new approach to analyzing immunity by unifying biological insight with 
+the mathematical tools of dynamical systems theory. Further development of the model may include:
+\begin{itemize}
+    \item adapting the operator $E$ to specific diseases,
+    \item constructing computational simulation engines,
+    \item applying optimal control methods to model therapeutic interventions.
+\end{itemize}
+
+\section{References}
+
+\begin{enumerate}
+    \item Bogdanov M. \textit{Flexionization: Formal Theory of Dynamic Quantitative Equilibrium.}
+    Zenodo Preprint, 2025. DOI: 10.5281/zenodo.17618948.
+
+    \item Perelson A., Weisbuch G. \textit{Immunology for Physicists.}
+    Reviews of Modern Physics, 1997.
+
+    \item Nowak M., May R. \textit{Virus Dynamics: Mathematical Principles of Immunology and Virology.}
+    Oxford University Press, 2000.
+
+    \item Strogatz S. \textit{Nonlinear Dynamics and Chaos.}
+    Westview Press.
+
+    \item Khalil H. \textit{Nonlinear Systems.}
+    Prentice Hall.
+
+    \item De Boer R., Perelson A. \textit{Target Cell Limited Models of Viral Infection: 
+    Mathematical Analysis and Applications.} Journal of Virology.
+
+    \item Altan-Bonnet G., Hoppe A. \textit{Mathematical Models of T-cell Activation and Immune Regulation.}
+    Nature Reviews Immunology.
+
+    \item Bertsekas D. \textit{Dynamic Programming and Optimal Control.}
+    Athena Scientific.
+
+    \item Rockafellar R. \textit{Convex Analysis.}
+    Princeton University Press.
+\end{enumerate}
+
+\end{document}
