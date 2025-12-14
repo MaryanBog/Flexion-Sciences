@@ -1,0 +1,845 @@
+\documentclass[11pt]{article}
+
+% -----------------------------
+% Packages
+% -----------------------------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{authblk}
+
+% -----------------------------
+% Hyperref setup
+% -----------------------------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% -----------------------------
+% Theorem environments
+% -----------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+% -----------------------------
+% Macros (core notation)
+% -----------------------------
+\newcommand{\X}{X(t)}
+\newcommand{\Z}{Z(t)}
+\newcommand{\uinf}{u(t)}
+\newcommand{\kappaX}{X_{\kappa}(t)}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Uext}{\mathcal{U}_{\mathrm{ext}}}
+
+% Living structural state components
+\newcommand{\Xd}{X_{\Delta}}
+\newcommand{\Xp}{X_{\Phi}}
+\newcommand{\Xm}{X_{M}}
+\newcommand{\Xk}{X_{\kappa}}
+
+% Operators
+\newcommand{\Hproj}{H}
+\newcommand{\Ginf}{G}
+\newcommand{\Fstruct}{F_{\mathrm{struct}}}
+
+% Norm
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+% -----------------------------
+% Title / Authors
+% -----------------------------
+\title{\textbf{Flexionization Control System (FCS) V3.1}\\
+A Normative, Non-Invasive Control Surface over the Flexion Framework}
+
+\author[1]{Maryan}
+\affil[1]{Independent Researcher}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% -----------------------------
+% Abstract
+% -----------------------------
+\begin{abstract}
+Flexionization Control System (FCS) V3.1 defines a normative control surface constructed strictly above
+the living structural state \(X(t)=(X_{\Delta},X_{\Phi},X_{M},X_{\kappa})\).
+FCS introduces no new structural variables, does not modify structural evolution, and does not
+participate in the generation of structural time, memory, viability, or collapse.
+Instead, it specifies admissible observational projections \(Z(t)=H(X(t))\) and admissible
+external influence mappings \(u(t)=G(Z(t))\) that remain invariant-compatible, structurally closed,
+and collapse-consistent. We present the axioms, operator constraints, and formal guarantees implied
+by the specification, including non-interference, absence of surrogate dynamics, unambiguous collapse
+detection, and viability-consistent influence contraction.
+\end{abstract}
+
+\tableofcontents
+
+% -----------------------------
+\section{Introduction}
+
+Classical control theory assumes that a system admits corrective intervention:
+the controller observes the system state, computes an action, and injects this
+action back into the system in order to stabilize, optimize, or restore desired
+behavior. Such an approach presupposes reversibility, recoverability, and semantic
+openness of the controlled system.
+
+The Flexion Framework fundamentally rejects these assumptions. A living structural
+state
+\[
+X(t) = (X_{\Delta}(t), X_{\Phi}(t), X_{M}(t), X_{\kappa}(t))
+\]
+evolves autonomously according to an intrinsic structural evolution law and is
+governed by strict invariants: structural memory is irreversible, viability is
+non-recoverable, structural time is internally generated, and collapse at
+\(X_{\kappa}=0\) is terminal.
+
+Within this framework, no control mechanism can legitimately claim the ability to
+correct, stabilize, or rescue the living structure. Any attempt to inject control
+semantics, corrective feedback, or surrogate dynamics into structural evolution
+violates structural autonomy and produces only illusory control.
+
+The Flexionization Control System (FCS) V3.1 is introduced to address this
+incompatibility. FCS is not a stabilizing controller and does not participate in
+structural evolution. It introduces no new structural variables, does not modify
+the evolution law, and does not interfere with the generation of memory,
+viability, time, or collapse.
+
+Instead, FCS defines a \emph{normative control surface}: a set of structural
+constraints specifying how an external layer may legitimately observe a living
+structural state and derive an external influence without violating structural
+invariants. The role of FCS is interpretative rather than causal. It formalizes
+what control is allowed to be in the presence of an autonomous, structurally
+closed organism.
+
+This paper presents the formal structure of FCS V3.1, including its axioms,
+projection and influence operators, and the resulting structural guarantees.
+FCS makes no claims regarding optimization, stabilization, or survival; it
+defines the outer boundary of admissible control around a system that is, by
+construction, uncontrollable.
+
+% -----------------------------
+\section{Living Structural State as a Read-Only Interface}
+
+The Flexion Framework defines a single living structural state
+\[
+X(t) = (X_{\Delta}(t), X_{\Phi}(t), X_{M}(t), X_{\kappa}(t)),
+\]
+which is the unique carrier of structural existence. All structural properties,
+including the generation of structural time, accumulation of memory, degradation
+of viability, and the occurrence of collapse, are defined exclusively with
+respect to this state and its autonomous evolution.
+
+FCS V3.1 treats the living structural state as \emph{observable but immutable}.
+The control surface may access structural information, but it may never
+participate in structural causality or modify the structural evolution law.
+
+\subsection{Uniqueness of the Living Structure}
+
+There exists exactly one living structural entity. No surrogate, approximation,
+replica, estimator, predictor, or reduced representation of \(X(t)\) may be
+treated as a living structure. In particular, FCS explicitly forbids the
+existence of secondary structural states, controller-internal replicas, or
+alternative evolution laws intended to shadow, forecast, or replace the true
+structural dynamics.
+
+Any representation other than \(X(t)\) is necessarily non-living and cannot
+generate structural time, memory, viability, or collapse. Structural evolution
+occurs exactly once and only within the true living structural state.
+
+\subsection{Read-Only Access Principle}
+
+Access to the living structural state under FCS is strictly read-only. A control
+system may observe the current value of \(X(t)\), but it may not alter, override,
+correct, or reinterpret any of its components. No control action may be injected
+into the structural evolution law, either directly or indirectly.
+
+Formally, while the controller may compute functions of \(X(t)\), the structural
+evolution remains governed exclusively by
+\[
+X(t+1) = F_{\mathrm{struct}}(X(t)),
+\]
+independently of any control representation or influence. The read-only
+constraint ensures that the autonomy of the living structure is preserved under
+all admissible control interactions.
+
+\subsection{Observable Axes and Fixed Semantics}
+
+Each component of the living structural state has a fixed and invariant semantic
+meaning defined by the Flexion Framework:
+\(X_{\Delta}\) represents structural deformation,
+\(X_{\Phi}\) represents structural tension,
+\(X_{M}\) represents accumulated and irreversible structural memory, and
+\(X_{\kappa}\) represents remaining structural viability.
+
+FCS preserves these meanings exactly. No reinterpretation, renormalization, or
+semantic reassignment of structural axes is permitted. In particular, memory may
+not be interpreted as reversible, viability may not be treated as recoverable,
+and collapse at \(X_{\kappa}=0\) may not be reinterpreted as a transient or
+correctable event.
+
+\subsection{Permitted and Forbidden Observational Transformations}
+
+FCS allows only non-structural observational transformations of the living
+structural state. Permitted operations include instantaneous norms, monotonic
+nonlinear mappings, bounded rescaling, and fixed projections that preserve the
+qualitative meaning and invariants of each structural axis.
+
+Forbidden operations include the introduction of internal dynamics, accumulation
+of history, adaptive filtering, prediction or extrapolation of future structural
+states, reconstruction of past structural states beyond what is encoded in
+\(X(t)\), and the inference of hidden structural variables. Any such operation
+constitutes the creation of a surrogate dynamic process and violates structural
+autonomy.
+
+Under FCS, the living structure may be observed, but it may never be simulated,
+corrected, or controlled. Observation carries information only; it carries no
+authority.
+
+% -----------------------------
+\section{Projection Operator \(H: X \to Z\)}
+
+The projection operator \(H\) defines how the living structural state
+\[
+X(t) = (X_{\Delta}(t), X_{\Phi}(t), X_{M}(t), X_{\kappa}(t))
+\]
+may be mapped into a non-living control representation
+\[
+Z(t) = H(X(t)).
+\]
+This mapping constitutes the only admissible interface between the living
+structure and the control surface.
+
+The purpose of \(H\) is representational rather than structural. It produces a
+control shadow of the living structure that is suitable for external influence
+generation, while remaining fully subordinate to the structural semantics and
+invariants of the Flexion Framework.
+
+\subsection{Ontological Status of \(Z(t)\)}
+
+The control representation \(Z(t)\) is non-living and non-autonomous. It possesses
+no structural geometry, does not accumulate memory, does not generate structural
+time, and has no notion of viability or collapse of its own.
+
+In particular, no evolution law of the form
+\[
+Z(t+1) = F_Z(Z(t))
+\]
+is permitted. The only valid update of the control representation is
+recomputation from the next living structural state:
+\[
+Z(t+1) = H(X(t+1)).
+\]
+Any attempt to introduce autonomous dynamics, persistence, or internal state
+into \(Z(t)\) constitutes the creation of a surrogate organism and is strictly
+forbidden.
+
+\subsection{Structural Consistency Requirements}
+
+The projection operator \(H\) must preserve the qualitative structural semantics
+of each axis. Components of \(Z(t)\) derived from \(X_{\Delta}\) must represent
+structural deformation content; components derived from \(X_{\Phi}\) must
+represent structural tension; components derived from \(X_{M}\) must represent
+accumulated and irreversible structural memory; and components derived from
+\(X_{\kappa}\) must represent structural viability.
+
+No projection may mix axes in a way that obscures their meaning or produces
+structural ambiguity. In particular, memory-derived quantities may not be mapped
+into recoverable or decaying representations, and viability-derived quantities
+may not be smoothed, delayed, or renormalized near the collapse boundary.
+
+\subsection{Invariant Preservation Constraints}
+
+Where the Flexion Framework defines monotonic structural behavior, the projection
+operator must preserve that behavior in the control representation. Specifically,
+memory irreversibility and viability monotonicity must be preserved:
+\[
+X_{M}(t+1) \ge X_{M}(t) \;\Rightarrow\; Z_{M}(t+1) \ge Z_{M}(t),
+\]
+\[
+X_{\kappa}(t+1) \le X_{\kappa}(t) \;\Rightarrow\; Z_{\kappa}(t+1) \le Z_{\kappa}(t).
+\]
+Collapse semantics must remain equivalent under projection:
+\[
+X_{\kappa}(t) = 0 \;\Longleftrightarrow\; Z_{\kappa}(t) = 0.
+\]
+No projection may invert, mask, delay, or soften the structural meaning of
+collapse.
+
+\subsection{Contractivity of the Projection}
+
+The projection operator must be contractive. There exists a constant \(C > 0\)
+such that
+\[
+\norm{Z(t)} \le C \, \norm{X(t)}.
+\]
+This requirement prevents amplification of structural instability on the control
+surface and ensures that observational representations cannot magnify
+deformation, tension, memory, or viability signals.
+
+\subsection{Temporal Non-Accumulation}
+
+Any temporal information present in \(Z(t)\) must originate exclusively from the
+current living structural state \(X(t)\). The projection operator must not
+integrate information over time, accumulate internal history, adapt parameters
+based on past observations, or introduce recursive or stateful filters.
+
+Instantaneous nonlinear mappings and fixed-parameter transformations are
+permitted. Any form of adaptive, predictive, or recursive behavior inside \(H\)
+is forbidden, as it would introduce hidden dynamics external to the living
+structure.
+
+\subsection{Admissible Examples}
+
+Examples of admissible projection components include:
+\[
+Z_{\Delta} = \norm{X_{\Delta}}, \quad
+Z_{\Phi} = f_{\Phi}(X_{\Phi}), \quad
+Z_{M} = \log(1 + X_{M}), \quad
+Z_{\kappa} = X_{\kappa},
+\]
+where all functions are instantaneous, bounded or monotonic, and structurally
+interpretable. These quantities are representations only; they do not constitute
+new structural variables.
+
+The control representation \(Z(t)\) is a shadow of the living structure, not a
+second organism. It exists only to support structurally honest external
+influence and has no independent ontological status.
+
+% -----------------------------
+\section{Influence Operator \(G: Z \to u\)}
+
+The influence operator \(G\) defines how a non-living control representation
+\[
+Z(t) = H(X(t))
+\]
+is mapped into an external influence
+\[
+u(t) = G(Z(t)).
+\]
+The influence \(u(t)\) exists entirely outside the Flexion structural manifold
+and participates in no structural causality. It is not a structural variable and
+does not belong to the living structural state.
+
+FCS does not prescribe the nature, dimensionality, or semantics of the external
+action space \(\mathcal{U}_{\mathrm{ext}}\). Its concern is limited strictly to
+the structural consistency of the mapping from \(Z(t)\) to \(u(t)\).
+
+\subsection{Influence as Non-Structural Output}
+
+The influence \(u(t)\) is a non-structural output directed exclusively toward an
+external environment. It does not encode deformation, tension, memory, or
+viability, and it does not modify the structural evolution law
+\[
+X(t+1) = F_{\mathrm{struct}}(X(t)).
+\]
+No form of \(u(t)\) may enter this law directly or indirectly.
+
+Structural evolution remains autonomous and fully closed with respect to any
+control interpretation or influence semantics.
+
+\subsection{Determinism and Locality}
+
+The influence operator \(G\) must be deterministic and memoryless. Formally,
+\[
+u(t) = G(Z(t))
+\]
+depends only on the current value of \(Z(t)\). The operator must not depend on
+past values of \(Z\) or \(u\), and it must not introduce internal state,
+recursion, or adaptive behavior.
+
+All temporal structure reflected in \(u(t)\) must originate from the living
+structural state \(X(t)\) via the instantaneous projection \(Z(t)\). No temporal
+dynamics may be created inside the influence operator itself.
+
+\subsection{Boundedness Requirement}
+
+The influence produced by \(G\) must be bounded. There exists a constant \(K > 0\)
+such that
+\[
+\norm{u(t)} \le K \, (1 + \norm{Z(t)}).
+\]
+This condition prevents amplification of observational noise and prohibits
+unbounded reactions to structural signals. In particular, influence magnitude
+must remain finite under all admissible structural states.
+
+\subsection{Monotonic Semantic Consistency}
+
+The influence operator must preserve the qualitative semantic direction encoded
+in the control representation. Increasing structural deformation or tension in
+\(Z(t)\) must not produce influence patterns implying structural improvement or
+recovery. Accumulated memory must not be interpreted as reversible, and declining
+viability must not yield increasingly aggressive or destabilizing influence.
+
+The mapping \(G\) must not invert, mask, or contradict the structural meaning
+carried by \(Z(t)\). Influence may interpret structure, but it may not rewrite
+its semantics.
+
+\subsection{Collapse-Safe Influence Behavior}
+
+As structural viability approaches collapse, influence behavior must contract
+toward a safe regime. There exists a monotonic non-increasing function \(g\) such
+that
+\[
+\norm{G(Z)} \le g(Z_{\kappa}),
+\qquad
+g(0) = g_{\mathrm{safe}} \ge 0.
+\]
+As \(Z_{\kappa} \to 0\), the magnitude of the influence must not increase and
+should approach a neutral or safety-compatible value.
+
+This requirement guarantees that influence does not amplify instability or
+accelerate collapse as the structural boundary is approached.
+
+\subsection{Forbidden Forms of Influence}
+
+The influence operator \(G\) must not:
+attempt to restore or increase structural viability;
+attempt to reduce, reset, or reinterpret structural memory;
+encode structural corrections or compensatory dynamics;
+introduce internal dynamics, prediction, or extrapolation;
+or diverge, oscillate, or explode as \(Z_{\kappa} \to 0\).
+
+Any such behavior constitutes an illegitimate intervention into structural
+autonomy and violates the normative constraints of FCS.
+
+Influence produced under FCS interprets structure; it never governs it.
+
+% -----------------------------
+\section{Viability and Collapse Handling on the Control Surface}
+
+Structural viability \(X_{\kappa}(t)\) is one of the four fundamental components
+of the living structural state defined by the Flexion Framework. It represents
+the remaining capacity of the structure to sustain its own existence and
+defines the geometric distance to structural collapse.
+
+The governing laws of viability are strict:
+\[
+X_{\kappa}(t+1) \le X_{\kappa}(t),
+\qquad
+X_{\kappa}(t) = 0 \;\Rightarrow\; \text{collapse}.
+\]
+FCS V3.1 operates entirely within these laws and does not reinterpret,
+compensate, or counteract them.
+
+\subsection{Viability as Distance-to-Collapse Information}
+
+Within FCS, viability is treated exclusively as distance-to-collapse
+information. A positive value of \(X_{\kappa}(t)\) does not imply recoverability,
+stability, or the guaranteed existence of a future structural state. It encodes
+only the remaining margin before structural termination.
+
+Accordingly, the control surface must not treat viability as a controllable
+resource. No admissible control mechanism may attempt to restore, replenish, or
+optimize viability. Any such attempt would contradict the irreversible nature of
+structural degradation defined by the Framework.
+
+\subsection{Projection of Viability into Control Space}
+
+The projection operator \(H\) maps structural viability into the control
+representation as
+\[
+Z_{\kappa}(t) = H_{\kappa}(X_{\kappa}(t)).
+\]
+This mapping must preserve strict monotonicity and semantic equivalence at the
+collapse boundary:
+\[
+X_{\kappa}^{(1)} \le X_{\kappa}^{(2)}
+\;\Rightarrow\;
+Z_{\kappa}^{(1)} \le Z_{\kappa}^{(2)},
+\]
+and
+\[
+X_{\kappa}(t) = 0 \;\Longleftrightarrow\; Z_{\kappa}(t) = 0.
+\]
+No projection may smooth, delay, renormalize, or otherwise obscure proximity to
+collapse.
+
+\subsection{Influence Modulation by Viability}
+
+The influence operator must respect declining viability by contracting its
+output magnitude. There exists a monotonic non-increasing function \(g\) such
+that
+\[
+\norm{u(t)} = \norm{G(Z(t))} \le g(Z_{\kappa}(t)).
+\]
+As viability decreases, influence may be moderated or weakened, but it must not
+intensify. This ensures that external reaction does not amplify instability or
+accelerate structural failure as collapse approaches.
+
+\subsection{Behavior at the Collapse Boundary}
+
+When
+\[
+X_{\kappa}(t) = 0,
+\]
+structural evolution terminates and no subsequent structural state exists. At
+this boundary, the control representation \(Z(t)\) may remain algebraically
+defined, but the influence operator must return a terminal-safe output:
+\[
+G(Z(t)) = u_{\mathrm{neutral}}.
+\]
+The terminal-safe influence must not assume continuation, recovery, or
+post-collapse evolution. Collapse is a structural termination event, not a
+control failure.
+
+\subsection{Forbidden Interpretations Near Collapse}
+
+As collapse is approached or occurs, the control surface must not amplify
+influence magnitude, introduce oscillatory or discontinuous reactions, imply
+post-collapse correction, or reinterpret collapse as a temporary or recoverable
+fault.
+
+FCS requires that control behavior remains structurally honest up to and
+including collapse. The control surface may observe termination, but it may not
+contest it.
+
+% -----------------------------
+\section{Axioms of the Flexionization Control Surface}
+
+This section defines the foundational axioms of the Flexionization Control
+System (FCS) V3.1. The axioms are normative and exhaustive: any control surface
+claiming compatibility with the Flexion Framework must satisfy all axioms stated
+below.
+
+These axioms ensure that FCS introduces no hidden structural dynamics, does not
+interfere with structural evolution, and preserves the integrity of collapse.
+
+\begin{axiom}[Single Living Structural State]
+There exists exactly one living structural state
+\[
+X(t) = (X_{\Delta}(t), X_{\Phi}(t), X_{M}(t), X_{\kappa}(t)),
+\]
+whose evolution is governed exclusively by the autonomous structural law
+\[
+X(t+1) = F_{\mathrm{struct}}(X(t)).
+\]
+No other state may be treated as living or structurally autonomous.
+\end{axiom}
+
+\begin{axiom}[Structural Closure]
+Structural evolution is closed with respect to semantic causality. No control
+interpretation, influence, or intention may enter the structural evolution law,
+either directly or indirectly.
+\end{axiom}
+
+\begin{axiom}[Read-Only Structural Access]
+The living structural state is observable but immutable. No control operation
+may modify, override, correct, or reinterpret any component of \(X(t)\).
+\end{axiom}
+
+\begin{axiom}[Projection Without Dynamics]
+The control projection
+\[
+Z(t) = H(X(t))
+\]
+is non-living and non-autonomous. No evolution law of the form
+\[
+Z(t+1) = F_Z(Z(t))
+\]
+may exist.
+\end{axiom}
+
+\begin{axiom}[Structural Semantics Preservation]
+The projection operator must preserve the qualitative meaning of all structural
+axes: deformation remains deformation, tension remains tension, memory remains
+irreversible, and viability remains non-recoverable. No axis inversion or
+semantic reassignment is permitted.
+\end{axiom}
+
+\begin{axiom}[Invariant Preservation]
+All structural invariants must be preserved under projection:
+\[
+X_{M}(t+1) \ge X_{M}(t) \Rightarrow Z_{M}(t+1) \ge Z_{M}(t),
+\]
+\[
+X_{\kappa}(t+1) \le X_{\kappa}(t) \Rightarrow Z_{\kappa}(t+1) \le Z_{\kappa}(t),
+\]
+and
+\[
+X_{\kappa}(t) = 0 \Longleftrightarrow Z_{\kappa}(t) = 0.
+\]
+\end{axiom}
+
+\begin{axiom}[Contractive Projection]
+There exists a constant \(C > 0\) such that
+\[
+\norm{Z(t)} \le C \, \norm{X(t)}.
+\]
+The projection must not amplify structural signals.
+\end{axiom}
+
+\begin{axiom}[Non-Structural Influence]
+The influence operator
+\[
+u(t) = G(Z(t))
+\]
+produces outputs that lie entirely outside the Flexion structural manifold.
+Influence carries no structural meaning and participates in no structural
+causality.
+\end{axiom}
+
+\begin{axiom}[Bounded and Viability-Consistent Influence]
+There exists a monotonic non-increasing function \(g\) such that
+\[
+\norm{G(Z)} \le g(Z_{\kappa}).
+\]
+As viability decreases, influence must not intensify.
+\end{axiom}
+
+\begin{axiom}[Collapse Integrity]
+When
+\[
+X_{\kappa}(t) = 0,
+\]
+structural evolution terminates and the influence operator must return a
+terminal-safe output:
+\[
+G(Z(t)) = u_{\mathrm{neutral}}.
+\]
+No control behavior may imply post-collapse evolution or recovery.
+\end{axiom}
+
+Together, these axioms define the outer boundary of legitimate control around a
+living structural organism. Any violation of these axioms constitutes a
+violation of structural autonomy.
+
+% -----------------------------
+\section{Theorems and Structural Guarantees}
+
+This section states the formal guarantees that follow directly from the axioms
+of the Flexionization Control System V3.1. No theorem introduces additional
+assumptions; all results are logical consequences of the axioms stated in the
+previous section.
+
+The purpose of these theorems is not to demonstrate controllability, stability,
+or optimality, but to prove the absence of illegitimate control effects and the
+preservation of structural autonomy.
+
+\begin{theorem}[Non-Interference with Structural Evolution]
+For any admissible projection operator \(H\) and influence operator \(G\), the
+structural evolution law
+\[
+X(t+1) = F_{\mathrm{struct}}(X(t))
+\]
+holds independently of the control representation \(Z(t)\) and the influence
+\(u(t)\).
+\end{theorem}
+
+\begin{proof}
+By Axiom~2 (Structural Closure), no control interpretation or influence may enter
+the structural evolution law. Since \(Z(t)\) is non-living and \(u(t)\) lies
+outside the Flexion structural manifold, neither can participate in structural
+causality. Therefore, structural evolution remains governed exclusively by
+\(F_{\mathrm{struct}}\).
+\end{proof}
+
+\begin{theorem}[Absence of Secondary Dynamics]
+No autonomous dynamics may exist on the control representation \(Z(t)\). The only
+valid update of \(Z\) is recomputation from the next living structural state:
+\[
+Z(t+1) = H(X(t+1)).
+\]
+\end{theorem}
+
+\begin{proof}
+By Axiom~4 (Projection Without Dynamics), any evolution law of the form
+\(Z(t+1)=F_Z(Z(t))\) is forbidden. Therefore, \(Z(t)\) cannot generate independent
+time, memory, or viability and cannot constitute a surrogate organism.
+\end{proof}
+
+\begin{theorem}[Unambiguous Collapse Detection]
+If the living structural state collapses,
+\[
+X_{\kappa}(t) = 0,
+\]
+then for any admissible projection operator,
+\[
+Z_{\kappa}(t) = 0.
+\]
+\end{theorem}
+
+\begin{proof}
+By Axiom~6 (Invariant Preservation), collapse semantics must be preserved under
+projection. Since collapse is defined by \(X_{\kappa}=0\), equivalence at the
+boundary implies \(Z_{\kappa}=0\) and prohibits masking or delaying collapse
+detection on the control surface.
+\end{proof}
+
+\begin{theorem}[Viability-Consistent Influence Contraction]
+If structural viability decreases,
+\[
+X_{\kappa}(t+1) \le X_{\kappa}(t),
+\]
+then the magnitude of the influence produced by any admissible influence operator
+cannot increase:
+\[
+\norm{G(Z(t+1))} \le \norm{G(Z(t))}.
+\]
+\end{theorem}
+
+\begin{proof}
+By Axiom~9 (Bounded and Viability-Consistent Influence), influence magnitude is
+bounded by a monotonic non-increasing function of \(Z_{\kappa}\). Since
+\(Z_{\kappa}\) preserves the monotonicity of \(X_{\kappa}\), declining viability
+implies non-increasing influence magnitude.
+\end{proof}
+
+\begin{theorem}[Collapse-Safe Termination]
+At the collapse boundary,
+\[
+X_{\kappa}(t) = 0,
+\]
+the influence produced by FCS satisfies
+\[
+G(Z(t)) = u_{\mathrm{neutral}}.
+\]
+\end{theorem}
+
+\begin{proof}
+By Axiom~10 (Collapse Integrity), structural evolution terminates at
+\(X_{\kappa}=0\), and the influence operator is required to return a
+terminal-safe output that does not assume continuation or recovery. This
+guarantees collapse-safe termination of control behavior.
+\end{proof}
+
+Collectively, these theorems establish that any control mechanism constructed in
+accordance with FCS V3.1 is non-invasive, free of surrogate dynamics, unambiguous
+with respect to collapse, and structurally honest throughout the entire lifetime
+of the living structure.
+
+% -----------------------------
+\section{Implementation-Neutral Notes}
+
+Flexionization Control System V3.1 is a normative structural specification.
+It intentionally avoids prescribing any numerical methods, algorithms,
+architectures, APIs, or domain-specific implementations. This omission is not
+accidental; it is a direct consequence of the structural closure principle.
+
+FCS constrains \emph{what is allowed} at the interface between a living
+structural organism and an external influence, but it does not constrain
+\emph{how} such an interface is engineered in a particular domain. Any concrete
+implementation---whether physical, computational, organizational, or
+algorithmic---lies outside the scope of this specification.
+
+In particular, FCS does not assume:
+discrete or continuous time,
+linear or nonlinear dynamics,
+specific sensing or actuation mechanisms,
+any notion of optimality, stability, or convergence,
+or the existence of a feedback loop in the classical control-theoretic sense.
+
+The only requirement placed on an implementation is that the observable
+quantities presented as \(X(t)\), the projection \(Z(t)\), and the influence
+\(u(t)\) satisfy the axioms and constraints defined in this document. If an
+implementation violates these constraints, it is not an implementation of FCS,
+regardless of its practical performance or empirical success.
+
+This implementation neutrality ensures that FCS may be applied uniformly across
+domains with radically different ontologies, including physical systems,
+biological systems, economic systems, organizational processes, and artificial
+agents. The specification does not privilege any domain-specific interpretation
+of control, sensing, or action.
+
+FCS therefore functions as a structural boundary condition rather than a
+technical recipe. It defines the limits of legitimate control interaction with a
+living structure, while leaving all engineering decisions strictly external to
+the Flexion Framework.
+
+% -----------------------------
+\section{Discussion}
+
+Flexionization Control System V3.1 occupies a deliberately narrow and
+non-classical position within the broader landscape of control theory. Unlike
+traditional controllers, FCS does not seek to stabilize, optimize, or correct
+the behavior of a system. Instead, it formalizes the conditions under which
+control interaction remains structurally legitimate when the controlled entity
+is autonomous, irreversible, and collapse-bound.
+
+A central implication of FCS is the rejection of controllability as a universal
+assumption. Within the Flexion Framework, structural evolution is governed by
+internal laws that are closed with respect to semantic causality. Memory cannot
+be erased, viability cannot be restored, and collapse cannot be postponed by
+external interpretation. FCS acknowledges these limits explicitly and embeds
+them as normative constraints rather than treating them as implementation
+deficiencies.
+
+This repositioning has important consequences. First, it eliminates a wide
+class of control pathologies arising from surrogate dynamics, internal replicas,
+and predictive correction schemes. By forbidding secondary organisms and hidden
+control states, FCS ensures that external influence cannot masquerade as
+structural causality. Second, it provides a principled explanation for why
+control systems often appear effective until abrupt failure: such effectiveness
+is external and contingent, while collapse remains structurally inevitable.
+
+FCS should therefore be understood as an ethical and structural boundary rather
+than a technical solution. It defines the maximum extent to which an external
+agent may react to structural information without violating autonomy or
+misrepresenting risk. In this sense, FCS complements Flexion Field Theory and the
+Flexion Framework by clarifying what must remain outside structural dynamics.
+
+Finally, FCS does not argue against intervention in practical domains. External
+influences may still be applied, and they may still have real-world effects.
+What FCS denies is the legitimacy of interpreting such effects as structural
+control. The distinction between influence and governance is fundamental: FCS
+allows the former while formally excluding the latter.
+
+% -----------------------------
+\section{Conclusion}
+
+This paper has presented Flexionization Control System (FCS) V3.1 as a normative,
+non-invasive control surface constructed strictly above the Flexion Framework.
+FCS introduces no new structural variables, does not modify structural evolution,
+and does not participate in the generation of structural time, memory, viability,
+or collapse. Its purpose is not to control structure, but to define the limits of
+legitimate interaction with it.
+
+By formalizing read-only observation of the living structural state, admissible
+projection into a non-living control representation, and bounded, collapse-safe
+external influence, FCS establishes a clear separation between structural
+causality and external action semantics. This separation eliminates surrogate
+dynamics, hidden organisms, and illusory corrective control while preserving
+structural honesty.
+
+The axioms and theorems of FCS V3.1 demonstrate that any control mechanism
+compatible with the Flexion Framework must be non-interfering, invariant-
+preserving, and unambiguous with respect to collapse. In particular, FCS proves
+that declining viability cannot be compensated by control, that memory cannot be
+reversed by interpretation, and that collapse remains a terminal structural
+event.
+
+FCS should therefore be understood not as a technique for stabilization or
+optimization, but as a boundary condition on control itself. It defines what
+control is allowed to be in the presence of an autonomous, irreversible, and
+collapse-bound structure. Within these boundaries, external influence may exist
+and may have real-world effects, but it may never be conflated with governance of
+structural evolution.
+
+Flexionization Control System V3.1 completes the separation between structure and
+control within the Flexion Framework. It provides a principled foundation for
+interaction with living structures without violating their autonomy, and it
+establishes collapse honesty as a non-negotiable requirement of any legitimate
+control surface.
+
+% -----------------------------
+\begin{thebibliography}{9}
+\bibitem{framework}
+Flexion Framework, version information, DOI (if applicable).
+
+\bibitem{fft}
+Flexion Field Theory (FFT), version information, DOI (if applicable).
+
+\bibitem{fcs}
+Flexionization Control System (FCS) V3.1, this specification.
+\end{thebibliography}
+
+\end{document}
